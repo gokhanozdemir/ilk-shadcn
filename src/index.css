@@ -4,65 +4,135 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: rgba(255, 255, 255, 0.87);
+  color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
+  --primary: 252, 87%, 54%;
+  --primary-hover: 252, 87%, 44%;
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
+  --secondary: 252, 57%, 95%;
+  --secondary-hover: 252, 57%, 100%;
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  --text-accent-foreground: 0, 0%, 100%;
+  --text-accent-background: 252, 87%, 44%;
+
+  --destructive: 10, 70%, 50%;
+  --destructive-hover: 10, 70%, 40%;
+
+  --disabled: 252, 15%, 50%;
+
+  --radius: 1rem;
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: hsl(var(--primary));
+  color: white;
+  border: none;
+  padding: 1rem 2.5rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: bold;
+  letter-spacing: 0.2px;
+  border-radius: 5px;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+  min-width: fit-content;
+
+  &:hover {
+    background-color: hsl(var(--primary-hover));
   }
-  a:hover {
-    color: #747bff;
+  /*
+   ----- 
+  Sizes
+  -----
+  */
+  &.sm {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.75rem;
   }
-  button {
-    background-color: #f9f9f9;
+  &.lg {
+    font-size: 1.5rem;
+  }
+
+  /*
+   ----- 
+  Shapes
+  -----
+  */
+
+  &.square {
+    border-radius: 0;
+  }
+
+  &.pill {
+    border-radius: 9999px;
+  }
+
+  /*
+   ----- 
+  Variants
+  -----
+  */
+  &.outline {
+    background-color: transparent;
+    color: hsl(var(--primary));
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: -2px;
+
+    &:hover {
+      background-color: hsl(var(--primary));
+      color: hsl(var(--text-accent-foreground));
+    }
+  }
+
+  &.secondary {
+    background-color: hsl(var(--secondary));
+    color: hsl(var(--primary));
+
+    &:hover {
+      background-color: hsl(var(--secondary-hover));
+    }
+  }
+
+  &.ghost {
+    background-color: transparent;
+    color: hsl(var(--primary));
+
+    &:hover {
+      color: hsl(var(--text-accent-background));
+      background-color: hsl(var(--secondary));
+    }
+  }
+
+  &.destructive {
+    background-color: hsl(var(--destructive));
+    color: hsl(var(--text-accent-foreground));
+
+    &:hover {
+      background-color: hsl(var(--destructive-hover));
+    }
+  }
+
+  &.link {
+    background-color: transparent;
+    color: hsl(var(--primary));
+    text-decoration: underline;
+    text-underline-offset: 0.4rem;
+    text-decoration-thickness: 0.15rem;
+
+    text-decoration-color: transparent;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+
+    &:hover {
+      color: hsl(var(--primary-hover));
+      text-decoration-color: hsl(var(--primary-hover));
+    }
   }
 }
