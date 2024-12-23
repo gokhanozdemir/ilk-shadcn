@@ -4,128 +4,90 @@
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-
-  --primary: 252, 87%, 54%;
-  --primary-hover: 252, 87%, 44%;
-
-  --secondary: 252, 57%, 95%;
-  --secondary-hover: 252, 57%, 100%;
-
-  --text-accent-foreground: 0, 0%, 100%;
-  --text-accent-background: 252, 87%, 44%;
-
-  --destructive: 10, 70%, 50%;
-  --destructive-hover: 10, 70%, 40%;
-
-  --disabled: 252, 15%, 50%;
-
-  --radius: 1rem;
 }
 
-.button {
-  background-color: hsl(var(--primary));
-  color: white;
-  border: none;
-  padding: 1rem 2.5rem;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-weight: bold;
-  letter-spacing: 0.2px;
-  border-radius: 5px;
-  cursor: pointer;
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 200 77.78% 5.29%;
 
-  min-width: fit-content;
+    --primary: 202 87.23% 53.92%;
+    --primary-foreground: 200 77.78% 95.29%;
 
-  &:hover {
-    background-color: hsl(var(--primary-hover));
+    --card: 198 83.33% 97.65%;
+    --card-foreground: 200 77.78% 5.29%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 200 77.78% 5.29%;
+
+    --secondary: 201.29 88.57% 93.14%;
+    --secondary-foreground: 0 0% 0%;
+
+    --muted: 202.86 91.3% 95.49%;
+    --muted-foreground: 0 0% 40%;
+
+    --accent: 202.86 91.3% 95.49%;
+    --accent-foreground: 201.29 75.61% 8.04%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 201.95 87.23% 90.78%;
+    --input: 201.6 26.88% 81.76%;
+    --ring: 202 87.23% 53.92%;
+
+    --chart-1: 202 87.23% 53.92%;
+    --chart-2: 201.72 87% 60.78%;
+    --chart-3: 201.65 86.93% 70%;
+    --chart-4: 201.77 87.6% 74.71%;
+    --chart-5: 201.52 86.79% 79.22%;
+
+    --radius: 0.5rem;
   }
-  /*
-   ----- 
-  Sizes
-  -----
-  */
-  &.sm {
-    padding: 0.75rem 1.25rem;
-    font-size: 0.75rem;
+  .dark {
+    --background: 0 0% 0%;
+    --foreground: 201.29 88.57% 93.14%;
+
+    --primary: 202 87.23% 53.92%;
+    --primary-foreground: 200 77.78% 5.29%;
+
+    --card: 202.5 26.67% 5.88%;
+    --card-foreground: 201.29 88.57% 93.14%;
+
+    --popover: 0 0% 0%;
+    --popover-foreground: 201.29 88.57% 93.14%;
+
+    --secondary: 201.67 75% 18.82%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 9.8%;
+    --muted-foreground: 0 0% 50.2%;
+
+    --accent: 201.67 75% 18.82%;
+    --accent-foreground: 201.29 88.57% 93.14%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 201.95 74.55% 10.78%;
+    --input: 201 19.23% 20.39%;
+    --ring: 202 87.23% 53.92%;
+
+    --chart-1: 202 87.23% 53.92%;
+    --chart-2: 201.72 74.36% 45.88%;
+    --chart-3: 201.65 74.3% 35.1%;
+    --chart-4: 201.77 74.83% 29.61%;
+    --chart-5: 201.52 74.19% 24.31%;
+
+    --radius: 0.5rem;
   }
-  &.lg {
-    font-size: 1.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
   }
-
-  /*
-   ----- 
-  Shapes
-  -----
-  */
-
-  &.square {
-    border-radius: 0;
-  }
-
-  &.pill {
-    border-radius: 9999px;
-  }
-
-  /*
-   ----- 
-  Variants
-  -----
-  */
-  &.outline {
-    background-color: transparent;
-    color: hsl(var(--primary));
-    outline: 2px solid hsl(var(--primary));
-    outline-offset: -2px;
-
-    &:hover {
-      background-color: hsl(var(--primary));
-      color: hsl(var(--text-accent-foreground));
-    }
-  }
-
-  &.secondary {
-    background-color: hsl(var(--secondary));
-    color: hsl(var(--primary));
-
-    &:hover {
-      background-color: hsl(var(--secondary-hover));
-    }
-  }
-
-  &.ghost {
-    background-color: transparent;
-    color: hsl(var(--primary));
-
-    &:hover {
-      color: hsl(var(--text-accent-background));
-      background-color: hsl(var(--secondary));
-    }
-  }
-
-  &.destructive {
-    background-color: hsl(var(--destructive));
-    color: hsl(var(--text-accent-foreground));
-
-    &:hover {
-      background-color: hsl(var(--destructive-hover));
-    }
-  }
-
-  &.link {
-    background-color: transparent;
-    color: hsl(var(--primary));
-    text-decoration: underline;
-    text-underline-offset: 0.4rem;
-    text-decoration-thickness: 0.15rem;
-
-    text-decoration-color: transparent;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-
-    &:hover {
-      color: hsl(var(--primary-hover));
-      text-decoration-color: hsl(var(--primary-hover));
-    }
+  body {
+    @apply bg-background text-foreground;
   }
 }
